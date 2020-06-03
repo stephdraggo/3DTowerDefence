@@ -20,8 +20,10 @@ public class Enemy : MonoBehaviour
     //distance travelled, towers will target furthest enemy
     public float Distance { get; private set; }
 
-    //damage approaching enemy, used so towers won't aim at this enemy if it is going to die from approaching shots
+    //damage that enemy will take when hit, for turning invisible if going to die
     public float incomingDamage = 0;
+    //if invisible (towers won't target this enemy)
+    public bool invisible;
 
     private void Start()
     {
@@ -87,6 +89,7 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
+        invisible = true;
 
         
     }

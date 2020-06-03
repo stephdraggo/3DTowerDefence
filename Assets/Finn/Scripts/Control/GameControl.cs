@@ -5,11 +5,8 @@ using UnityEngine;
 public class GameControl : MonoBehaviour
 {
     public int gold;
-    
     public TowerNode selectedNode;
     public GameObject rangeSphere;
-
-
     private void Start()
     {
         //hide selection
@@ -48,12 +45,6 @@ public class GameControl : MonoBehaviour
         GetComponent<MeshRenderer>().enabled = false;
         rangeSphere.GetComponent<MeshRenderer>().enabled = false;
     }
-
-    void ShowRadius()
-    {
-
-    }
-    #endregion
 
     #region towers
     public void BuildTower()

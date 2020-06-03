@@ -107,10 +107,12 @@ public class Tower : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            Debug.Log("Enemy sighted!");
             if (other.GetComponent<Enemy>())
             {
-                targets.Add(other.gameObject);
+                if (other.GetComponent<Enemy>().invisible == false)
+                {
+                    targets.Add(other.gameObject);
+                }
             }
         }
 
