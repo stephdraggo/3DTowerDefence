@@ -12,16 +12,22 @@ public class Enemy : MonoBehaviour
     public Transform startPoint;
     public Transform[] waypoints;
 
+    
+
     //waypoint index
     int index = 0;
 
     //distance travelled, towers will target furthest enemy
     public float Distance { get; private set; }
 
+    //damage approaching enemy, used so towers won't aim at this enemy if it is going to die from approaching shots
+    public float incomingDamage = 0;
+
     private void Start()
     {
         transform.position = startPoint.position;
     }
+    #region movement
 
     void Update()
     {
@@ -47,5 +53,43 @@ public class Enemy : MonoBehaviour
             }
         }
     }
+    #endregion
+
+    #region damage and death
+    public void Damage(float amount)
+    {
+        health -= amount;
+        incomingDamage -= amount;
+        if (health < 0)
+        {
+            RemoveFromLists();
+            Destroy(this.gameObject);
+        }
+    }
+
+    public void RemoveFromLists()
+    {
+        //find all towers and remove from target lists
+        GameObject[] towerObjects = GameObject.FindGameObjectsWithTag("Tower");
+        Tower[] towers = new Tower[towerObjects.Length];
+        if (towerObjects.Length > 0)
+        {
+            for (int i = 0; i < towers.Length; i++)
+            {
+                towers[i] = towerObjects[i].GetComponent<Tower>();
+            }
+
+            foreach (Tower tower in towers)
+            {
+                if (tower.targets.Contains(this.gameObject))
+                {
+                    tower.targets.Remove(this.gameObject);
+                }
+            }
+        }
+
+        
+    }
+    #endregion
 
 }

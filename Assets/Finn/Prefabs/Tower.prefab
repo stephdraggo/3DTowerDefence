@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 634979441940577443}
   m_Layer: 2
   m_Name: Tower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,6 +106,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e96d54f58f7cac43b13da72a5931065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shot: {fileID: 7569084901171177628, guid: 35b4cf3c8f3e93848b1449d1b5a32f9f, type: 3}
+  shotSpeed: 20
   range: 3
   damage: 3
   speed: 3
+  targets: []
