@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Gizmo : MonoBehaviour
 {
-    //for drawing gizmos in the scene view, will not show in game
-    public Color gizmoColor = new Color(1, 1, 1);
+    //for drawing gizmos in the scene view, won't show in game
+    public Color gizmoColor = Color.white;
     private void OnDrawGizmos()
     {
         Gizmos.color = gizmoColor;
