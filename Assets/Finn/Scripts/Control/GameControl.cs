@@ -45,6 +45,7 @@ public class GameControl : MonoBehaviour
         GetComponent<MeshRenderer>().enabled = false;
         rangeSphere.GetComponent<MeshRenderer>().enabled = false;
     }
+    #endregion
 
     #region towers
     public void BuildTower()
