@@ -71,7 +71,7 @@ namespace Steph
         #region SetVolume
         public void SetVolume(float volume)
         {
-            audioControl.SetFloat("music", volume);
+            audioControl.SetFloat("volume", volume);
         }
         #endregion
         #region SetGraphics
