@@ -544,7 +544,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1992070559}
   - component: {fileID: 1992070558}
-  - component: {fileID: 1992070557}
   m_Layer: 0
   m_Name: Bag of Holding
   m_TagString: Untagged
@@ -552,22 +551,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1992070557
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1992070556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7111adbeba8beec418f6ac132c100570, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  muted: 0
-  paused: 0
-  mainPanel: {fileID: 0}
-  optionsPanel: {fileID: 0}
 --- !u!114 &1992070558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -580,6 +563,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef96edb8ca39f2844af5d7a30bfae67f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameScene: 0
+  muted: 0
+  paused: 0
+  mainPanel: {fileID: 0}
+  optionsPanel: {fileID: 0}
+  resolutionSelect: {fileID: 0}
+  audioControl: {fileID: 0}
+  music: {fileID: 0}
+  click: {fileID: 0}
 --- !u!4 &1992070559
 Transform:
   m_ObjectHideFlags: 0
