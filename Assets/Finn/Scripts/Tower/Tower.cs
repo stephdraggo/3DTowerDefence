@@ -13,11 +13,23 @@ public class Tower : MonoBehaviour
     public float damage;
     public float speed;
 
+    [Header("Upgrades")]
+    public int rangeLevel = 1;
+    public int damageLevel = 1;
+    public int speedLevel = 1;
+    public int rangeCost = 50;
+    public int damageCost = 50;
+    public int speedCost = 50;
+
+    //Amount to multiply upgrade cost by with each upgrade
+    public int costMultiplier;
+
     [Header("Target enemies")]
     public List<GameObject> targets = new List<GameObject>();
 
     float reloadTime;
 
+    #region start
     private void Start()
     {
         //set up the sphere collider for finding enemies
@@ -25,9 +37,23 @@ public class Tower : MonoBehaviour
         sphere.radius = range;
         sphere.isTrigger = true;
 
+        //set upgrades and stats to default
+        rangeLevel = 1;
+        range = 2.5f;
+        rangeCost = 50;
+
+        damageLevel = 1;
+        damage = 3;
+        damageCost = 50;
+
+        speedLevel = 1;
+        speed = 3;
+        speedCost = 50;
+
         //start firing
         StartCoroutine(FireRoutine());
     }
+    #endregion
 
     #region fire
     public void Fire(GameObject target)
@@ -130,5 +156,30 @@ public class Tower : MonoBehaviour
     }
     #endregion
 
+    #region upgrade
+    public void UpgradeRange()
+    {
+        rangeLevel += 1;
+        range += 0.5f;
+        rangeCost *= costMultiplier;
+
+        GetComponent<SphereCollider>().radius = range;
+    }
+
+    public void UpgradeDamage()
+    {
+        damageLevel += 1;
+        damage += 1;
+        damageCost *= costMultiplier;
+    }
+
+    public void UpgradeSpeed()
+    {
+        speedLevel += 1;
+        speed += 1;
+        speedCost *= costMultiplier;
+    }
+
+    #endregion
 
 }

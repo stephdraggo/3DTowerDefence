@@ -7,12 +7,13 @@ public class Enemy : MonoBehaviour
     [Header("Stats")]
     public float health;
     public float speed;
+    public int gold;
 
     [Header("Path")]
     public Transform startPoint;
     public Transform[] waypoints;
 
-    
+    GameControl gameControl;
 
     //waypoint index
     int index = 0;
@@ -28,7 +29,9 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         transform.position = startPoint.position;
+        gameControl = GameObject.FindGameObjectWithTag("GameControl").GetComponent<GameControl>();
     }
+
     #region movement
 
     void Update()
@@ -62,9 +65,10 @@ public class Enemy : MonoBehaviour
     {
         health -= amount;
         incomingDamage -= amount;
-        if (health < 0)
+        if (health <= 0)
         {
             RemoveFromLists();
+            gameControl.IncreaseGold(gold);
             Destroy(this.gameObject);
         }
     }

@@ -109,9 +109,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   speed: 5
+  gold: 10
   startPoint: {fileID: 0}
   waypoints: []
   incomingDamage: 0
+  invisible: 0
 --- !u!54 &-3045330709911981561
 Rigidbody:
   m_ObjectHideFlags: 0
