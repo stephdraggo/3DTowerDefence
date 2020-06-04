@@ -11,19 +11,6 @@ public class EnemyWave : MonoBehaviour
     public Transform startPoint;
     public Transform[] waypoints;
 
-    [System.Serializable]
-    public struct EnemyDataStruct
-    {
-        float health;
-        float speed;
-        int gold;
-
-        float size;
-        Color color;
-    }
-
-    public EnemyDataStruct[] enemyType = new EnemyDataStruct[1];
-
     public void SpawnEnemy()
     {
         Enemy newEnemy = Instantiate(enemyPrefab, this.transform).GetComponent<Enemy>();
