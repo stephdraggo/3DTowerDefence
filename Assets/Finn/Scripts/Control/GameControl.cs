@@ -7,23 +7,35 @@ public class GameControl : MonoBehaviour
 {
     [Header("Control")]
     public int gold;
+    public int defence;
     public int towerCost = 100;
     public TowerNode selectedNode;
     public GameObject rangeSphere;
 
     [Header("UI References")]
     public Text goldText;
+    public Text defenceText;
+    public Text waveText;
     public Text buildText;
     public Text rangeText;
     public Text damageText;
     public Text speedText;
+    public GameObject gameOverPanel;
+
+    EnemyWave enemyWave;
     
     #region start
     private void Start()
     {
-        //set default gold
+
+        enemyWave = GameObject.FindGameObjectWithTag("EnemyWave").GetComponent<EnemyWave>();
+
+        //set defaults and update text elements
         gold = 200;
+        defence = 20;
         UpdateGoldText();
+        UpdateDefenceText();
+        UpdateWaveText();
         UpdateButtonText();
 
         //hide selection
@@ -63,6 +75,7 @@ public class GameControl : MonoBehaviour
         selectedNode = null;
         GetComponent<MeshRenderer>().enabled = false;
         rangeSphere.GetComponent<MeshRenderer>().enabled = false;
+        UpdateButtonText();
     }
     #endregion
 
@@ -146,12 +159,67 @@ public class GameControl : MonoBehaviour
 
     #endregion
 
+    #region wave
+    public void StartWave()
+    {
+        if (!enemyWave.inWave)
+        {
+            if (!(enemyWave.currentWave == enemyWave.wave.Length))
+            {
+                enemyWave.StartWave();
+                UpdateWaveText();
+            }
+        }
+    }
+    #endregion
+
+    #region damage and game over
+    public void Damage(int amount)
+    {
+        defence -= amount;
+        UpdateDefenceText();
+        if (defence <= 0)
+        {
+            GameOver();
+        }
+    }
+
+    public void GameOver()
+    {
+        if (gameOverPanel != null) {
+            gameOverPanel.SetActive(true);
+        }
+    }
+    #endregion
+
     #region UI
 
     public void UpdateGoldText()
     {
         goldText.text = "Gold: " + gold;
     }
+
+    public void UpdateDefenceText()
+    {
+        defenceText.text = "Defences: " + defence;
+    }
+
+    public void UpdateWaveText()
+    {
+        if (enemyWave.currentWave == enemyWave.wave.Length)
+        {
+            waveText.text = "All waves cleared!";
+        }
+        else if (enemyWave.inWave)
+        {
+            waveText.text = "-";
+        }
+        else
+        {
+            waveText.text = "Start Wave " + enemyWave.currentWave;
+        }
+    }
+
 
     public void UpdateButtonText()
     {

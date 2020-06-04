@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public float health;
     public float speed;
     public int gold;
+    public int damage;
 
     [Header("Path")]
     public Transform startPoint;
@@ -26,11 +27,13 @@ public class Enemy : MonoBehaviour
     //if invisible (towers won't target this enemy)
     public bool invisible;
 
+    #region start
     private void Start()
     {
         transform.position = startPoint.position;
         gameControl = GameObject.FindGameObjectWithTag("GameControl").GetComponent<GameControl>();
     }
+    #endregion
 
     #region movement
 
@@ -53,8 +56,9 @@ public class Enemy : MonoBehaviour
             //if at final waypoint, dissappear
             if (index >= waypoints.Length)
             {
+                gameControl.Damage(damage);
                 GameObject.Destroy(this.gameObject);
-                //TODO: Player loses life
+                
             }
         }
     }
