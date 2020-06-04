@@ -66,7 +66,7 @@ namespace Steph
         {
             paused = false; //sets bool value
             Time.timeScale = 1; //resumes time
-            mainPanel.SetActive(true); //turns off pause panel in game scene
+            mainPanel.SetActive(false); //turns off pause panel in game scene
         }
         #endregion
         #region ChangeScene
