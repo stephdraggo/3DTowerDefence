@@ -27,6 +27,10 @@ public class Enemy : MonoBehaviour
     //if invisible (towers won't target this enemy)
     public bool invisible;
 
+    //if true, game ends after defeat
+    public bool finalEnemy;
+
+
     #region start
     private void Start()
     {
@@ -73,6 +77,10 @@ public class Enemy : MonoBehaviour
         {
             RemoveFromLists();
             gameControl.IncreaseGold(gold);
+            if (finalEnemy)
+            {
+                gameControl.WinGame();
+            }
             Destroy(this.gameObject);
         }
     }

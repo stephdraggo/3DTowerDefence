@@ -21,6 +21,7 @@ public class GameControl : MonoBehaviour
     public Text damageText;
     public Text speedText;
     public GameObject gameOverPanel;
+    public GameObject winPanel;
 
     EnemyWave enemyWave;
     
@@ -169,6 +170,14 @@ public class GameControl : MonoBehaviour
                 enemyWave.StartWave();
                 UpdateWaveText();
             }
+        }
+    }
+
+    public void WinGame()
+    {
+        if (winPanel != null)
+        {
+            winPanel.SetActive(true);
         }
     }
     #endregion

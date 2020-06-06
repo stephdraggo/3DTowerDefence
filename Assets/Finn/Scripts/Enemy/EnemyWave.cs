@@ -107,6 +107,10 @@ public class EnemyWave : MonoBehaviour
         newEnemy.speed = enemyData[type].speed;
         newEnemy.gold = enemyData[type].gold;
         newEnemy.damage = enemyData[type].damage;
+        if (currentWave == wave.Length - 1)
+        {
+            newEnemy.finalEnemy = true;
+        }
 
         newEnemy.GetComponent<MeshRenderer>().material.color = enemyData[type].color;
         newEnemy.transform.localScale = Vector3.one* enemyData[type].size;
